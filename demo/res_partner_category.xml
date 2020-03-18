@@ -1,0 +1,10 @@
+<odoo>
+	<data>
+		
+	<record id="res_partner_category_od" model="res.partner.category">
+    	<field name="name">OD</field>
+    	<field name="active">True</field>
+    </record>
+
+	</data>
+</odoo>
