@@ -26,10 +26,11 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
+        'data/product.xml',
+        'data/res_partner_category.xml',        
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/product.xml',
-        'demo/res_partner_category.xml',
+
     ],
 }
