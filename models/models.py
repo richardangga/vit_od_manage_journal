@@ -21,8 +21,8 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
 	_inherit = 'sale.order.line'
 
-	marketing_pct = fields.Float(string="Market Pct(%)",required=True)
-	marketing_nom = fields.Float(string="Market Nominal",required=True)
+	marketing_pct = fields.Float(string="Market Pct(%)")
+	marketing_nom = fields.Float(string="Market Nominal")
 
 	def _prepare_invoice_line(self, qty):
 		res = super(SaleOrderLine,self)._prepare_invoice_line(qty)
@@ -37,8 +37,8 @@ class SaleOrderLine(models.Model):
 class AccountInvoiceLine(models.Model):
 	_inherit = 'account.invoice.line'
 
-	marketing_pct = fields.Float(string="Market Pct(%)",required=True)
-	marketing_nom = fields.Float(string="Market Nominal",required=True)
+	marketing_pct = fields.Float(string="Market Pct(%)")
+	marketing_nom = fields.Float(string="Market Nominal")
 
 class AccountInvoice(models.Model):
 	_inherit = 'account.invoice'
