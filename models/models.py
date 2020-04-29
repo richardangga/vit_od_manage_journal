@@ -11,6 +11,10 @@ class SaleOrder(models.Model):
 
 	def _prepare_invoice(self):
 		invoice_vals = super(SaleOrder,self)._prepare_invoice()
+
+		if not self.od_id:
+			return invoice_vals
+
 		invoice_vals.update({
 			'od_id': self.od_id.id,
 		 })
@@ -47,10 +51,9 @@ class AccountInvoice(models.Model):
 	
 	def action_invoice_open(self):
 		res = super(AccountInvoice, self).action_invoice_open()
-		if self.type != 'out_invoice':
+		if self.type != 'out_invoice' or not self.od_id:
 			return res
 		self.ensure_one()
-
 		object_journal = self.env['account.journal'].search([('type','=','purchase')], limit=1)
 		account = self.env['account.account'].search([('user_type_id','=','Payable')], limit=1)
 		marketing_fee = self.env['product.template'].search([('name','=','Marketing Fee')], limit=1)
